@@ -1,0 +1,590 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #333333 100%); /* Black to dark grey gradient */
+    color: #f0f0f0; /* Light grey text */
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background: radial-gradient(ellipse at bottom, #330033 0%, #000000 100%); /* Black hole effect with purple */
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom-left-radius: 150px; /* Increased curve */
+    border-bottom-right-radius: 150px; /* Increased curve */
+    box-shadow: 0 15px 40px rgba(128, 0, 128, 0.8); /* Purple glow */
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3.5em;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5); /* White text shadow */
+    position: relative;
+    z-index: 1;
+}
+
+header .subtitle {
+    margin: 15px 0 0;
+    font-size: 1.4em;
+    font-weight: 300;
+    opacity: 0.8;
+    position: relative;
+    z-index: 1;
+}
+
+/* Introduction */
+.introduction {
+    background: #1a1a1a; /* Dark background */
+    padding: 40px;
+    border-radius: 20px;
+    margin: 40px auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    text-align: center;
+    border-left: 10px solid #666666; /* Grey accent */
+    font-size: 1.1em;
+    line-height: 1.8;
+    position: relative;
+    overflow: hidden;
+    color: #f0f0f0; /* Light text */
+}
+
+.introduction::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.05), rgba(50, 50, 50, 0.05)); /* Subtle dark grey gradient */
+    z-index: 0;
+}
+
+.introduction strong {
+    color: #cccccc; /* Lighter grey accent */
+}
+
+/* Roadmap Timeline */
+#roadmap-container {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline-thread {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#roadmap-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 2px; /* Thinner line */
+    background: linear-gradient(to bottom, rgba(100, 100, 100, 0.3), rgba(200, 200, 200, 0.3)); /* Subtle grey gradient */
+    transform: translateX(-50%);
+    z-index: -1;
+    border-radius: 1px;
+}
+
+.year-card {
+    position: relative;
+    margin-bottom: 80px;
+    width: 45%;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background: #1a1a1a; /* Dark background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Darker shadow */
+    border: 2px solid transparent; /* Default transparent border */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    animation: fade-in 1s ease-out forwards;
+    opacity: 0;
+    color: #e0e0e0; /* Light text */
+}
+
+.year-card:nth-child(3n+1) {
+    border-color: #ff0000; /* Red */
+}
+
+.year-card:nth-child(3n+2) {
+    border-color: #ff69b4; /* Pink */
+}
+
+.year-card:nth-child(3n) {
+    border-color: #0000ff; /* Blue */
+}
+
+.year-card:nth-child(odd) {
+    left: 55%;
+    transform: translateX(100%);
+}
+
+.year-card:nth-child(even) {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.year-card.in-view {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.year-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Even darker shadow on hover */
+}
+
+.year-card::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #000000; /* Black background for the hole */
+    border-radius: 50%;
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.3), 0 0 10px rgba(255, 255, 255, 0.2); /* Inner glow and subtle outer glow */
+    z-index: 2; /* Ensure it's above the timeline */
+    top: 15px; /* Position from the top */
+}
+
+.year-card:nth-child(odd)::before {
+    left: 15px; /* Position on the top-left for odd cards (now on right) */
+}
+
+.year-card:nth-child(even)::before {
+    right: 15px; /* Position on the top-right for even cards (now on left) */
+}
+
+.year-card h2 {
+    color: #cccccc; /* Grey accent */
+    font-size: 2.2em;
+    margin-top: 0;
+    border-bottom: 4px solid #999999; /* Grey border */
+    padding-bottom: 15px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.year-card h3 {
+    font-weight: 500;
+    margin-top: 10px;
+    color: #b0b0b0; /* Lighter grey */
+    font-size: 1.5em;
+}
+
+/* Sections */
+.sections-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.section-card {
+    background: #2a2a2a; /* Dark background */
+    padding: 25px;
+    border-radius: 15px;
+    border: 2px solid transparent; /* Increased border width from 1px to 2px */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Darker shadow */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smoother, more bouncy transition */
+    color: #e0e0e0; /* Light text */
+    transform-origin: center; /* Ensure scaling happens from center */
+}
+
+.section-card:hover {
+    transform: translateY(-8px) scale(1.03); /* Added slight scale effect */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); /* Increased shadow */
+    border-color: inherit; /* This will use the border color set by the year-card:nth-child rules */
+}
+
+/* Custom glow effects for each year's section cards */
+.year-card:nth-child(1) .section-card:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 59, 59, 0.4)); /* Red glow */
+}
+
+.year-card:nth-child(2) .section-card:hover {
+    filter: drop-shadow(0 0 10px rgba(162, 89, 255, 0.4)); /* Purple glow */
+}
+
+.year-card:nth-child(3) .section-card:hover {
+    filter: drop-shadow(0 0 10px rgba(0, 230, 118, 0.4)); /* Green glow */
+}
+
+.year-card:nth-child(4) .section-card:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.4)); /* Pink glow */
+}
+.section-card h4 {
+    margin-top: 0;
+    color: #00ffff; /* Cyan accent */
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.section-card ul {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
+}
+
+/* Skills */
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    border-bottom: 1px dashed #444444; /* Darker dashed border */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px; /* Rounded corners */
+    border: 1px solid transparent; /* Default transparent border */
+}
+
+.skill-item:last-child {
+    border-bottom: none;
+}
+
+.skill-item:hover {
+    background-color: transparent; /* Transparent background on hover */
+    border-color: inherit; /* This will use the border color set by the year-card:nth-child rules */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.skill-name {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #c0c0c0; /* Lighter grey */
+}
+
+.skill-name input[type="checkbox"] {
+    /* This will be removed or hidden */
+    display: none;
+}
+
+.skill-name .pin-icon { /* New class for the pin icon */
+    margin-right: 10px;
+    font-size: 1.2em;
+    color: #ffffff; /* Changed from cyan to white */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.skill-name .pin-icon:hover {
+    transform: scale(1.2);
+}
+
+.skill-resources {
+    margin-top: 10px;
+    padding-left: 37px; /* Align with pin icon */
+    display: none; /* Initially hidden */
+    animation: slide-down 0.3s ease-out forwards;
+}
+
+.skill-item.active {
+    background-color: transparent; /* Transparent background when active */
+}
+
+.skill-item.active .skill-resources {
+    display: block;
+}
+
+@keyframes slide-down {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.skill-resources ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-resources li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 20px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    padding: 5px 5px 5px 20px;
+    border: 1px solid transparent;
+}
+
+.skill-resources li:hover {
+    border-color: inherit; /* This will use the border color set by the year-card:nth-child rules */
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.skill-resources li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #90ee90;
+}
+
+.skill-resources li.external::before {
+    background-color: #ff6b6b;
+}
+
+.skill-resources a {
+    color: #90ee90; /* Light green for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 0.95em;
+    margin-left: 5px;
+}
+
+.skill-resources a:hover {
+    color: #00ffff; /* Cyan on hover */
+    text-decoration: underline;
+}
+
+.skill-resources .emoji {
+    font-size: 1.1em;
+    margin-right: 5px;
+}
+
+/* Progress Bar */
+#progress-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a; /* Dark background */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+#progress-bar {
+    width: 0%;
+    height: 10px;
+    background: linear-gradient(90deg, #00aaff, #00ffff); /* Blue to cyan gradient */
+    transition: width 0.3s ease-out;
+    border-radius: 0 5px 5px 0;
+}
+
+/* Go to Top Button */
+#go-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #00aaff; /* Blue */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Darker shadow */
+    display: none; /* Hidden by default */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+}
+
+#go-to-top:hover {
+    background: #00ffff; /* Cyan on hover */
+    transform: translateY(-5px);
+}
+
+/* Responsive Design - Adjust colors for dark theme */
+@media (max-width: 992px) {
+    header h1 {
+        font-size: 2.8em;
+    }
+    header .subtitle {
+        font-size: 1.2em;
+    }
+    .year-card {
+        width: 90%;
+        left: 5%;
+        padding: 25px;
+    }
+    .year-card:nth-child(odd)::after,
+    .year-card:nth-child(even)::after {
+        left: -15px; /* Adjust for single column */
+        top: 20px;
+    }
+    #roadmap-container::before {
+        left: 20px;
+    }
+    .year-card:nth-child(odd),
+    .year-card:nth-child(even) {
+        transform: translateX(0%); /* No horizontal animation on small screens */
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 40px 15px;
+    }
+    header h1 {
+        font-size: 2.2em;
+    }
+    .introduction {
+        margin: 30px auto;
+        padding: 30px;
+    }
+    .year-card {
+        padding: 20px;
+        margin-bottom: 60px;
+    }
+    .year-card h2 {
+        font-size: 1.8em;
+    }
+    .year-card h3 {
+        font-size: 1.3em;
+    }
+    .sections-container {
+        gap: 20px;
+    }
+    .section-card {
+        padding: 20px;
+    }
+    .section-card h4 {
+        font-size: 1.2em;
+    }
+    .skill-name input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+    .skill-resources {
+        padding-left: 35px;
+    }
+    #go-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    header .subtitle {
+        font-size: 1em;
+    }
+    .introduction {
+        padding: 20px;
+        font-size: 0.95em;
+    }
+    .year-card {
+        width: 95%;
+        left: 2.5%;
+    }
+    .year-card h2 {
+        font-size: 1.5em;
+    }
+    .year-card h3 {
+        font-size: 1.1em;
+    }
+    .skill-name {
+        font-size: 0.9em;
+    }
+    .skill-resources a {
+        font-size: 0.85em;
+    }
+}
+.year-card:nth-child(1),
+.year-card:nth-child(1) .section-card,
+.year-card:nth-child(1) .skill-resources li::before {
+    border-color: #ff3b3b !important; /* Red */
+    box-shadow: 0 0 0 2px #ff3b3b33;
+    background-color: #1a1a1a;
+}
+.year-card:nth-child(2),
+.year-card:nth-child(2) .section-card,
+.year-card:nth-child(2) .skill-resources li::before {
+    border-color: #a259ff !important; /* Purple */
+    box-shadow: 0 0 0 2px #a259ff33;
+    background-color: #1a1a1a;
+}
+.year-card:nth-child(3),
+.year-card:nth-child(3) .section-card,
+.year-card:nth-child(3) .skill-resources li::before {
+    border-color: #00e676 !important; /* Green */
+    box-shadow: 0 0 0 2px #00e67633;
+    background-color: #1a1a1a;
+}
+.year-card:nth-child(4),
+.year-card:nth-child(4) .section-card,
+.year-card:nth-child(4) .skill-resources li::before {
+    border-color: #ff69b4 !important; /* Pink */
+    box-shadow: 0 0 0 2px #ff69b433;
+    background-color: #1a1a1a;
+}
+
+/* Remove default border colors for year-cards */
+.year-card {
+    border: 2px solid transparent;
+}
+.section-card {
+    border: 1px solid transparent;
+}
+.skill-resources li::before {
+    background-color: inherit;
+}
+/* Remove this extra closing brace as it's not matching any opening brace */
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    header .subtitle {
+        font-size: 1em;
+    }
+    .introduction {
+        padding: 20px;
+        font-size: 0.95em;
+    }
+    .year-card {
+        width: 95%;
+        left: 2.5%;
+    }
+    .year-card h2 {
+        font-size: 1.5em;
+    }
+    .year-card h3 {
+        font-size: 1.1em;
+    }
+    .skill-name {
+        font-size: 0.9em;
+    }
+    .skill-resources a {
+        font-size: 0.85em;
+    }
+}
+ 
